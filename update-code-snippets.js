@@ -1,77 +1,113 @@
-// updates code snippets from remote repo
-// needs to run in the secondary DevTools window (undocked)
-// see "Updating local code snippets"
-var source = localStorage.scriptSnippets;
-if (typeof source === 'undefined') {
-  throw new Error('Cannot find scriptSnippets, are you running in the secondary DevTools?\n' +
-    'see https://github.com/bahmutov/code-snippets#updating-local-code-snippets');
+void function() {
+"use strict"
+
+// update snippets from frombahmutov/code-snippets
+
+
+let_us("execute some init tests", function(){
+  if(location.origin !== "chrome-devtools://devtools") throw new Error('Cannot find scriptSnippets, are you running in the secondary DevTools?\n see https://github.com/bahmutov/code-snippets#updating-local-code-snippets')
+  ok(location.origin === "chrome-devtools://devtools", 'we are in devtools of devtools, good to go')
+})
+
+
+var repo = 'https://raw.githubusercontent.com/bahmutov/code-snippets/master/'
+var updated = []
+var snippets
+
+
+getHostSnippets()
+    .then(checkAndUpdate)
+    .then(saveToChrome)
+    .catch(function(err){throw Error(err)})
+
+
+function getHostSnippets(){
+    return new Promise(function (resolve, reject) {      
+      InspectorFrontendHost.getPreferences(function(prefs){
+          resolve(prefs.scriptSnippets)
+      })
+    })
 }
-var snippets = JSON.parse(source);
-console.log('I have', snippets.length, 'code snippets');
-console.table(snippets);
 
-// read code snippets from this repo via RawGit.com
-var repo = 'https://rawgit.com/bahmutov/code-snippets/master/';
 
-function fetch(url) {
-  return new Promise(function (resolve, reject) {
-    var request = new XMLHttpRequest();
-    request.open('GET', url, true);
+function checkAndUpdate(snips){
+  snippets = JSON.parse(snips)
+  var promise_chain = snippets.reduce(chainSnippet, Promise.resolve())
+  return promise_chain
+}
 
-    request.onload = function () {
-      if (request.status >= 200 && request.status < 400) {
-        resolve(request.responseText);
+
+function saveToChrome(){
+    console.log('fetched', updated.length, 'snippets')
+
+      updated.forEach(function (update) {
+        var snippet = snippets[update.index]
+        console.assert(update.name === snippet.name,
+          'name mismatch for update', update, snippet);
+        snippet.content = update.content;
+      });
+      if (updated.length) {
+        InspectorFrontendHost.setPreference("scriptSnippets", JSON.stringify(snippets))
+        console.table(updated);
+        console.log('please reopen DevTools to load updated code snippets');
       } else {
-        reject(request.responseText);
+        console.log('nothing to update.');
       }
-    };
+}
 
-    request.onerror = function (err) {
-      reject(err);
-    };
 
-    request.send();
+function chainSnippet(chain, snippet, k) {
+  return chain.then(function () {
+    return updateSnippet(k, snippet.id, snippet.name)
   });
 }
 
-var updated = [];
 
 function updateSnippet(k, id, filename) {
-  return fetch(repo + filename)
+  return fetch(repo + filename + ".js")
     .then(function (source) {
-      console.log('fetched new source for', id, filename);
-      // console.log(source);
+      console.log('fetched new source for', id, filename)
       updated.push({
         index: k,
         id: id,
         content: source,
         name: filename
-      });
+      })
+      console.log(updated)
     }, function () {
       console.error('cannot find remote for', filename);
     });
 }
 
-function chainSnippet(chain, snippet, k) {
-  return chain.then(function () {
-    return updateSnippet(k, snippet.id, snippet.name);
-  });
+
+// read code snippets from this repo via RawGit.com
+function fetch(url) {
+  return new Promise(function (resolve, reject) {
+    var request = new XMLHttpRequest()
+    request.open('GET', url, true)
+
+    request.onload = function () {
+      if (request.status >= 200 && request.status < 400) {
+        resolve(request.responseText)
+      } else {
+        reject(request.responseText)
+      }
+    }
+
+    request.onerror = function (err) {
+      reject(err)
+    }
+
+    request.send()
+  })
 }
 
-var allChecked = snippets.reduce(chainSnippet, Promise.resolve());
-allChecked.then(function () {
-  console.log('fetched', updated.length, 'snippets');
-  updated.forEach(function (update) {
-    var snippet = snippets[update.index];
-    console.assert(update.name === snippet.name,
-      'name mismatch for update', update, snippet);
-    snippet.content = update.content;
-  });
-  if (updated.length) {
-    localStorage.scriptSnippets = JSON.stringify(snippets);
-    console.table(updated);
-    console.log('please reopen DevTools to load updated code snippets');
-  } else {
-    console.log('nothing to update.');
-  }
-});
+
+/* nano test harness 
+*/
+function let_us(msg,f){console.log(msg); f()}
+function ok(expr, msg){ expr? console.log("!pass "+msg) : console.log("?fail"+msg)}
+// TODO: remove harness and tests
+
+
+}('today is a good day')
