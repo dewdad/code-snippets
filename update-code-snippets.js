@@ -15,12 +15,14 @@ var updated = []
 var snippets
 
 
+/* Main Logic*/
 getHostSnippets()
     .then(checkAndUpdate)
     .then(saveToChrome)
     .catch(function(err){throw Error(err)})
 
 
+/* Helpers */
 function getHostSnippets(){
     return new Promise(function (resolve, reject) {      
       InspectorFrontendHost.getPreferences(function(prefs){
