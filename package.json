@@ -2,9 +2,9 @@
   "name": "code-snippets",
   "description": "Chrome DevTools code snippets ",
   "version": "0.0.0-semantic-release",
-  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "author": "Gleb dewdad <gleb.dewdad@gmail.com>",
   "bugs": {
-    "url": "https://github.com/bahmutov/code-snippets/issues"
+    "url": "https://github.com/dewdad/code-snippets/issues"
   },
   "config": {
     "pre-git": {
@@ -45,7 +45,7 @@
     "*.js",
     "!Gruntfile.js"
   ],
-  "homepage": "https://github.com/bahmutov/code-snippets",
+  "homepage": "https://github.com/dewdad/code-snippets",
   "keywords": [
     "chrome",
     "code",
@@ -60,7 +60,7 @@
   "main": "first-paint.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bahmutov/code-snippets.git"
+    "url": "https://github.com/dewdad/code-snippets.git"
   },
   "scripts": {
     "build": "grunt",

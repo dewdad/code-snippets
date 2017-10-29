@@ -2,7 +2,7 @@
   "name": "code-snippets",
   "main": "first-paint.js",
   "version": "0.0.0-semantic-release",
-  "homepage": "https://github.com/bahmutov/code-snippets",
+  "homepage": "https://github.com/dewdad/code-snippets",
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -27,6 +27,6 @@
   ],
   "description": "Chrome DevTools code snippets ",
   "authors": [
-    "Gleb Bahmutov <gleb.bahmutov@gmail.com>"
+    "Gleb dewdad <gleb.dewdad@gmail.com>"
   ]
 }

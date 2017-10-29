@@ -12,18 +12,18 @@
 
 [code-snippets-icon]: https://nodei.co/npm/code-snippets.png?downloads=true
 [code-snippets-url]: https://npmjs.org/package/code-snippets
-[code-snippets-ci-image]: https://travis-ci.org/bahmutov/code-snippets.png?branch=master
-[code-snippets-ci-url]: https://travis-ci.org/bahmutov/code-snippets
-[code-snippets-dependencies-image]: https://david-dm.org/bahmutov/code-snippets.png
-[code-snippets-dependencies-url]: https://david-dm.org/bahmutov/code-snippets
-[code-snippets-devdependencies-image]: https://david-dm.org/bahmutov/code-snippets/dev-status.png
-[code-snippets-devdependencies-url]: https://david-dm.org/bahmutov/code-snippets#info=devDependencies
+[code-snippets-ci-image]: https://travis-ci.org/dewdad/code-snippets.png?branch=master
+[code-snippets-ci-url]: https://travis-ci.org/dewdad/code-snippets
+[code-snippets-dependencies-image]: https://david-dm.org/dewdad/code-snippets.png
+[code-snippets-dependencies-url]: https://david-dm.org/dewdad/code-snippets
+[code-snippets-devdependencies-image]: https://david-dm.org/dewdad/code-snippets/dev-status.png
+[code-snippets-devdependencies-url]: https://david-dm.org/dewdad/code-snippets#info=devDependencies
 [code-snippets-codacy-image]: https://www.codacy.com/project/badge/99acaf40b1f1483c80016eb31fbaef49
-[code-snippets-codacy-url]: https://www.codacy.com/public/bahmutov/code-snippets.git
+[code-snippets-codacy-url]: https://www.codacy.com/public/dewdad/code-snippets.git
 [semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-url]: https://github.com/semantic-release/semantic-release
 
-![fist paint](https://raw.githubusercontent.com/bahmutov/code-snippets/master/first-paint-code-snippet.png)
+![fist paint](https://raw.githubusercontent.com/dewdad/code-snippets/master/first-paint-code-snippet.png)
 
 Read [Code Snippets tutorial][1],
 [Performance profiling using DevTools code snippets][2] and
@@ -88,11 +88,11 @@ digest duration for several selectors and print sorted table starting with the s
 * [ng-monitor-digest-cycle.js](ng-monitor-digest-cycle.js) - prints a string every time a digest cycle runs.
 * [ng-count-digest-cycles.js](ng-count-digest-cycles.js) - counts number of full digest cycles (from the root scope)
 that run when a scope method executes. Useful because sometimes you can get away with just a local digest
-cycle, rather than a full update. See [Local Angular scopes](http://glebbahmutov.com/blog/local-angular-scopes/).
+cycle, rather than a full update. See [Local Angular scopes](http://glebdewdad.com/blog/local-angular-scopes/).
 * [ng-count-digest-cycle-simple.js](ng-count-digest-cycle-simple.js) - keeps counting number of times
 the digest cycle runs.
 * [ng-throw-error.js](ng-throw-error.js) throws an error from the digest cycle; useful for checking
-if your [exception handler](http://glebbahmutov.com/blog/catch-all-errors-in-angular-app/) is working.
+if your [exception handler](http://glebdewdad.com/blog/catch-all-errors-in-angular-app/) is working.
 
 ## Misc snippets
 
@@ -109,7 +109,7 @@ You can update local code snippets by downloading new versions from this github 
 Create a new code snippet and copy the source from [update-code-snippets.js](update-code-snippets.js).
 
 Note: the approach below does not work any more,
-see [the open issue](https://github.com/bahmutov/code-snippets/issues/23).
+see [the open issue](https://github.com/dewdad/code-snippets/issues/23).
 
 You will run this code snippet in an unusual way. First, open any web page, even an empty tab.
 Open the DevTools in **undocked** mode (Command+Option+I on Mac). Then open the DevTools **again**,
@@ -137,7 +137,7 @@ You can download and run a single snippet by using the following boilerplate
 ```js
 (function firstPaintRemote() {
   // form rawGit proxy url
-  var ghUrl = 'bahmutov/code-snippets/master/first-paint.js';
+  var ghUrl = 'dewdad/code-snippets/master/first-paint.js';
   var rawUrl = 'https://rawgit.com/' + ghUrl;
   // download and run the script
   var head = document.getElementsByTagName('head')[0];
@@ -148,25 +148,25 @@ You can download and run a single snippet by using the following boilerplate
 }());
 ```
 
-![remote](https://raw.githubusercontent.com/bahmutov/code-snippets/master/first-paint-code-snippet-remote.png)
+![remote](https://raw.githubusercontent.com/dewdad/code-snippets/master/first-paint-code-snippet-remote.png)
 
 ### Small print
 
-Author: Gleb Bahmutov &copy; 2014
+Author: Gleb dewdad &copy; 2014
 
-* [@bahmutov](https://twitter.com/bahmutov)
-* [glebbahmutov.com](http://glebbahmutov.com)
-* [blog](http://glebbahmutov.com/blog/)
+* [@dewdad](https://twitter.com/dewdad)
+* [glebdewdad.com](http://glebdewdad.com)
+* [blog](http://glebdewdad.com/blog/)
 
 License: MIT - do anything with the code, but don't blame me if it does not work.
 
 Spread the word: tweet, star on github, etc.
 
 Support: if you find any problems with this module, email / tweet /
-[open issue](https://github.com/bahmutov/code-snippets/issues?state=open) on Github
+[open issue](https://github.com/dewdad/code-snippets/issues?state=open) on Github
 
-[1]: http://glebbahmutov.com/blog/chrome-dev-tools-code-snippets/
-[2]: http://glebbahmutov.com/blog/performance-profiling-using-devtools-code-snippets/
-[3]: http://glebbahmutov.com/blog/improving-angular-web-app-performance-example/
-[measure]: http://glebbahmutov.com/blog/measure-space-allocation/
+[1]: http://glebdewdad.com/blog/chrome-dev-tools-code-snippets/
+[2]: http://glebdewdad.com/blog/performance-profiling-using-devtools-code-snippets/
+[3]: http://glebdewdad.com/blog/improving-angular-web-app-performance-example/
+[measure]: http://glebdewdad.com/blog/measure-space-allocation/
 [RawGit]: https://rawgit.com/

@@ -1,16 +1,16 @@
 void function() {
 "use strict"
 
-// update snippets from frombahmutov/code-snippets
+// update snippets from fromdewdad/code-snippets
 
 
 let_us("execute some init tests", function(){
-  if(location.origin !== "chrome-devtools://devtools") throw new Error('Cannot find scriptSnippets, are you running in the secondary DevTools?\n see https://github.com/bahmutov/code-snippets#updating-local-code-snippets')
+  if(location.origin !== "chrome-devtools://devtools") throw new Error('Cannot find scriptSnippets, are you running in the secondary DevTools?\n see https://github.com/dewdad/code-snippets#updating-local-code-snippets')
   ok(location.origin === "chrome-devtools://devtools", 'we are in devtools of devtools, good to go')
 })
 
 
-var repo = 'https://raw.githubusercontent.com/bahmutov/code-snippets/master/'
+var repo = 'https://raw.githubusercontent.com/dewdad/code-snippets/learning-dom/'
 var updated = []
 var snippets
 

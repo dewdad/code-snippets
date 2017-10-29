@@ -1,7 +1,7 @@
 /*
   This code snippet checks if the page allows creating
   and executing new inline scripts (script-injection attacks)
-  See https://github.com/bahmutov/disable-inline-javascript-tutorial
+  See https://github.com/dewdad/disable-inline-javascript-tutorial
 */
 (function testInlineScriptInjection() {
   var el = document.createElement('script');
